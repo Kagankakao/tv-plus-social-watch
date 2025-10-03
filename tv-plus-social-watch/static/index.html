@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV+ Sosyal İzleme</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <h1>TV+ Sosyal İzleme</h1>
+            <div class="room-info">
+                <span id="selected-content">İçerik seçilmedi</span>
+                <span id="room-users" style="color: #fddb3a;">👥 0 kişi</span>
+                <span id="countdown">--:--:--</span>
+            </div>
+        </div>
+        <div class="room-code-display">
+            <div class="room-code-label">Oda Kodu</div>
+            <div class="room-code" id="room-code">---</div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Left Side - Video Player -->
+        <div class="video-section">
+            <div class="video-player">
+                <div class="video-placeholder">
+                    <div class="selected-movie-overlay" id="selected-movie-overlay" style="display: none;">
+                        <div class="movie-title-display" id="movie-title-display">---</div>
+                    </div>
+                    <div class="play-icon" id="play-btn">▶</div>
+                    <div class="video-title" id="video-title">
+                        <div style="text-align: center;">
+                            <div style="font-size: 1.2rem; color: #fddb3a;">🎬 Video Player</div>
+                            <div style="font-size: 0.9rem; color: #999; margin-top: 0.5rem;">Oylama tamamlandığında içerik yüklenecek</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="video-controls">
+                    <button id="play-pause-btn">▶ Play</button>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <span id="time-display">00:00 / 00:00</span>
+                    <button id="sync-btn" class="sync-btn">🔄 Senkronize Et</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side - Tabs -->
+        <div class="sidebar">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="voting">Oylama</button>
+                <button class="tab-btn" data-tab="chat">Sohbet</button>
+                <button class="tab-btn" data-tab="split">Masraf</button>
+            </div>
+
+            <!-- Voting Tab -->
+            <div class="tab-content active" id="voting-tab">
+                <h3>İçerik Oylaması</h3>
+                <div class="voting-info" style="padding: 0.75rem; background: rgba(253, 219, 58, 0.1); border-radius: 4px; border-left: 3px solid #fddb3a; margin-bottom: 1rem;">
+                    <small style="color: #fddb3a;">
+                        💡 En az 2 kişi ile oylayabilirsiniz. En çok oy alan içerik oynatılır.
+                    </small>
+                </div>
+                <div class="candidates-list" id="candidates-list">
+                    <!-- Candidates will be loaded here -->
+                </div>
+                <button id="complete-voting-btn" class="complete-voting-btn" style="display: none; margin-top: 1rem; width: 100%; padding: 0.75rem; background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer; font-size: 1rem;">
+                    ✓ Oylamayı Tamamla
+                </button>
+            </div>
+
+            <!-- Chat Tab -->
+            <div class="tab-content" id="chat-tab">
+                <h3>Sohbet</h3>
+                <div class="chat-messages" id="chat-messages">
+                    <div class="message">
+                        <span class="username">Sistem:</span>
+                        <span class="text">Odaya hoş geldiniz!</span>
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="message-input" placeholder="Mesajınızı yazın...">
+                    <button id="send-btn">Gönder</button>
+                </div>
+                <div class="emoji-bar">
+                    <button class="emoji-btn" data-emoji="👏">👏</button>
+                    <button class="emoji-btn" data-emoji="😂">😂</button>
+                    <button class="emoji-btn" data-emoji="❤️">❤️</button>
+                    <button class="emoji-btn" data-emoji="👍">👍</button>
+                    <button class="emoji-btn" data-emoji="😮">😮</button>
+                </div>
+            </div>
+
+            <!-- Split Tab -->
+            <div class="tab-content" id="split-tab">
+                <h3>Masraf Paylaşımı (Split)</h3>
+                <div class="expense-form">
+                    <input type="text" id="expense-desc" placeholder="Açıklama (örn: Pizza)">
+                    <input type="number" id="expense-amount" placeholder="Tutar (₺)" step="0.01" min="0">
+                    <input type="number" id="expense-weight" placeholder="Ağırlık (1.0 = Eşit)" step="0.1" min="0.1" value="1.0">
+                    <button id="add-expense-btn">💰 Masraf Ekle</button>
+                    <div class="split-info">
+                        <small style="color: #fddb3a;">💡 Ağırlık: Eşit bölüşüm için 1.0, fazla pay için daha yüksek değer girin.</small>
+                    </div>
+                </div>
+                <div class="expenses-list" id="expenses-list">
+                    <!-- Masraflar buraya gelecek -->
+                </div>
+                <div class="balances" id="balances">
+                    <!-- Bakiyeler buraya gelecek -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Server Health & Party Timer -->
+    <div class="server-health-indicator" id="server-health">
+        <div class="health-status">
+            <span class="health-dot" id="health-dot"></span>
+            <span class="health-text" id="health-text">Bağlanıyor...</span>
+        </div>
+        <div class="party-timer">
+            <span class="timer-icon">🎉</span>
+            <span class="timer-text" id="party-timer">00:00:00</span>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

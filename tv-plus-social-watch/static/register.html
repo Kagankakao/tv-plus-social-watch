@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV+ Sosyal İzleme - Kayıt</title>
+    <link rel="stylesheet" href="/static/register.css">
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-card">
+            <div class="logo-section">
+                <h1>TV+ Sosyal İzleme</h1>
+                <p>Oda oluştur veya mevcut bir odaya katıl</p>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn create-room-btn" onclick="createRoom()">
+                    <div class="btn-icon">🏠</div>
+                    <div class="btn-content">
+                        <h3>Oda Oluştur</h3>
+                        <p>Yeni bir izleme odası oluştur ve arkadaşlarını davet et</p>
+                    </div>
+                </button>
+                
+                <div class="divider">
+                    <span>veya</span>
+                </div>
+                
+                <div class="join-room-section">
+                    <h3>Odaya Katıl</h3>
+                    <div class="join-form">
+                        <input type="text" id="roomCode" placeholder="Oda kodunu girin" maxlength="10">
+                        <button class="join-btn" onclick="joinRoom()">Katıl</button>
+                    </div>
+                </div>
+            </div>
+            
+            <button class="back-btn" onclick="goBack()">← Geri Dön</button>
+        </div>
+    </div>
+    
+    <script src="/static/register.js"></script>
+</body>
+</html>

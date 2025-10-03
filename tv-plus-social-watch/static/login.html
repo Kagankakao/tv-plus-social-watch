@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TV+ Sosyal İzleme - Giriş</title>
+    <link rel="stylesheet" href="/static/login.css">
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="logo-section">
+                <h1>TV+ Sosyal İzleme</h1>
+                <p>Arkadaşlarınla birlikte izleme deneyimi</p>
+            </div>
+            
+            <form class="login-form" id="loginForm">
+                <div class="form-group">
+                    <label for="userName">Adınız</label>
+                    <input type="text" id="userName" name="userName" placeholder="Adınızı girin" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Avatar Seçin</label>
+                    <div class="avatar-selection">
+                        <div class="avatar-option" data-avatar="avatar1">
+                            <div class="avatar-circle">👤</div>
+                            <span>Klasik</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar2">
+                            <div class="avatar-circle">🎭</div>
+                            <span>Eğlenceli</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar3">
+                            <div class="avatar-circle">🎬</div>
+                            <span>Sinema</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar4">
+                            <div class="avatar-circle">🍿</div>
+                            <span>Atıştırmalık</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar5">
+                            <div class="avatar-circle">⚽</div>
+                            <span>Spor</span>
+                        </div>
+                        <div class="avatar-option" data-avatar="avatar6">
+                            <div class="avatar-circle">🎵</div>
+                            <span>Müzik</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-btn">Giriş Yap</button>
+                <button type="button" class="register-btn" onclick="goToRegister()">Kaydol</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="/static/login.js"></script>
+</body>
+</html>
